@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Puneet Bhardwaj — Portfolio</title>
+  <meta name="description" content="Portfolio of Puneet Bhardwaj — BTech CSE student, beginner in Web Development and Python." />
+  <meta name="color-scheme" content="dark light" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Premium, readable font pairing -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ========== THEME ========= */
+    :root {
+      --bg: #0a192f;
+      --bg-2:#0f264f;
+      --surface: #132d55;
+      --text: #e6f1ff;
+      --muted:#a8b2d1;
+      --accent: #64ffda;
+      --accent-2:#60a5fa;
+      --card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.15);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --container: 1200px;
+    }
+    html[data-theme="light"] {
+      --bg:#f7fafc; --bg-2:#ffffff; --surface:#ffffff;
+      --text:#0f172a; --muted:#475569; --card:#ffffffcc;
+      --border:#e2e8f0; --shadow: 0 10px 30px rgba(2,6,23,.08);
+      --accent:#2563eb; --accent-2:#9333ea;
+    }
+
+    /* ========== BASE ========= */
+    * { box-sizing: border-box }
+    html { scroll-behavior: smooth }
+    body {
+      margin:0; background: radial-gradient(1000px 600px at 10% -10%, #1a3d73 0%, transparent 60%),
+                        radial-gradient(800px 500px at 100% 10%, #0b5f6f55 0%, transparent 55%),
+                        var(--bg);
+      color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none }
+    img { max-width: 100%; display: block }
+    .container { width: min(92%, var(--container)); margin: 0 auto }
+
+    /* ========== HEADER ========= */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(140%) blur(10px);
+      background: color-mix(in oklab, var(--bg) 80%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+    }
+    .brand {
+      display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.2px;
+      font-family: Poppins, Inter, sans-serif; font-size: clamp(18px, 2vw, 20px);
+    }
+    .brand .logo {
+      width:36px; height:36px; border-radius:12px; display:grid; place-items:center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#0b1220; font-weight:800; box-shadow: var(--shadow);
+    }
+    nav ul { display:flex; gap: 22px; list-style:none; padding:0; margin:0; align-items:center }
+    nav a {
+      padding: 8px 12px; border-radius: 999px; color: var(--muted); font-weight:600; font-size: 14px;
+    }
+    nav a:hover, nav a.active { color: var(--text); background: color-mix(in oklab, var(--card) 70%, transparent) }
+    .nav-actions { display:flex; align-items:center; gap:10px }
+    .btn {
+      display:inline-flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px;
+      padding: 10px 16px; border-radius: 999px; border:1px solid var(--border);
+      background: linear-gradient(135deg, color-mix(in oklab, var(--card) 70%, transparent), transparent);
+      box-shadow: var(--shadow);
+    }
+    .btn.primary {
+      border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #0a0f1a;
+    }
+    .theme-toggle, .menu-toggle {
+      width:40px; height:40px; display:grid; place-items:center; border-radius: 12px;
+      border:1px solid var(--border); background: var(--card); cursor:pointer
+    }
+    .menu-toggle { display:none }
+
+    /* ========== HERO ========= */
+    section { scroll-margin-top: 90px; }
+    .hero { padding: clamp(60px, 8vw, 120px) 0 60px; position:relative; overflow:hidden }
+    .hero-grid {
+      display:grid; grid-template-columns: 1.2fr 1fr; gap: clamp(24px, 6vw, 56px); align-items:center;
+    }
+    .eyebrow { color: var(--accent); font-weight:700; text-transform: uppercase; letter-spacing: .2em; font-size: 12px }
+    .h1 {
+      font-family: Poppins, Inter, sans-serif;
+      font-size: clamp(32px, 5.4vw, 64px); line-height:1.1; margin: 8px 0 14px;
+    }
+    .lead { color: var(--muted); font-size: clamp(16px, 1.6vw, 18px) }
+    .typed { border-right: 2px solid var(--accent); white-space:nowrap; overflow:hidden }
+    .actions { display:flex; gap:12px; margin-top: 24px; flex-wrap: wrap }
+    .hero-card {
+      background: var(--card); border:1px solid var(--border); border-radius: var(--radius);
+      padding:16px; display:flex; align-items:center; gap:12px
+    }
+    .hero-img {
+      aspect-ratio: 1/1; border-radius: 22px; overflow:hidden; border:1px solid var(--border);
+      background: linear-gradient(160deg, #1b2a4d, #0b1220);
+      box-shadow: var(--shadow);
+    }
+    .hero-img img { object-fit: cover; width:100%; height:100% }
+
+    /* ========== SECTION STYLES ========= */
+    .section { padding: clamp(56px, 8vw, 96px) 0 }
+    .section h2 {
+      font-family: Poppins, Inter, sans-serif; font-size: clamp(24px, 3.2vw, 36px);
+      margin-bottom: 10px;
+    }
+    .section p.sub { color: var(--muted); margin: 0 0 28px }
+    .grid { display:grid; gap: 20px }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: clamp(16px, 2vw, 20px); box-shadow: var(--shadow);
+    }
+
+    /* About */
+    .about-grid { grid-template-columns: 1.2fr .8fr }
+    .about-figure {
+      border-radius: 20px; overflow:hidden; border:1px solid var(--border);
+      box-shadow: var(--shadow)
+    }
+
+    /* Skills */
+    .skills-grid { grid-template-columns: repeat(3, minmax(0,1fr)) }
+    .skill .label { display:flex; justify-content:space-between; font-weight:600; margin-bottom:10px }
+    .bar { height: 10px; border-radius: 999px; background: #0c2e4e; border:1px solid var(--border); overflow:hidden }
+    .bar > span { display:block; height:100%; width:0; background: linear-gradient(90deg, var(--accent), var(--accent-2)) }
+
+    /* Education timeline */
+    .timeline { position:relative; padding-left: 22px }
+    .timeline::before { content:""; position:absolute; inset:0 0 0 10px; width:2px; background: var(--border) }
+    .t-item { position:relative; padding: 10px 0 10px 16px }
+    .t-item::before {
+      content:""; position:absolute; left:3px; top: 20px; width:10px; height:10px; border-radius:50%;
+      background: var(--accent); box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 20%, transparent);
+    }
+    .t-title { font-weight:700 }
+    .t-meta { color: var(--muted); font-size:14px }
+
+    /* Projects */
+    .projects-grid { grid-template-columns: repeat(3, minmax(0,1fr)) }
+    .project .tag { font-size:12px; color: var(--muted) }
+    .project .thumb {
+      border-radius:14px; overflow:hidden; border:1px solid var(--border);
+      aspect-ratio: 16/10; background: #0d223e; display:grid; place-items:center; font-weight:700; color: var(--muted)
+    }
+
+    /* Contact */
+    .contact-grid { grid-template-columns: 1fr 1fr }
+    form { display:grid; gap:12px }
+    input, textarea {
+      background: var(--bg-2); border:1px solid var(--border); color:var(--text);
+      padding:12px 14px; border-radius: 12px; font: inherit;
+    }
+    textarea { min-height: 140px; resize: vertical }
+    .info-list { display:grid; gap:8px }
+    .info-list a { color: var(--text) }
+    .map {
+      border:1px solid var(--border); border-radius: 16px; overflow:hidden;
+      aspect-ratio: 16/10; width:100%
+    }
+
+    /* Footer */
+    footer { padding: 28px 0; border-top: 1px solid var(--border); color: var(--muted); text-align:center }
+
+    /* Utilities */
+    .reveal { opacity:0; transform: translateY(18px); transition: all .7s cubic-bezier(.2,.65,.2,1) }
+    .reveal.visible { opacity:1; transform: none }
+
+    /* Responsive */
+    @media (max-width: 1000px) {
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr }
+      .projects-grid { grid-template-columns: repeat(2, 1fr) }
+    }
+    @media (max-width: 640px) {
+      nav ul { display:none }
+      .menu-toggle { display:grid }
+      .skills-grid, .projects-grid { grid-template-columns: 1fr }
+    }
+
+    /* Skip link */
+    .skip { position: absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden }
+    .skip:focus { position:static; width:auto; height:auto; padding:6px 10px; background: var(--accent); color:#0b1220; border-radius:8px }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="logo">PB</span>
+        <span>Puneet&nbsp;Bhardwaj</span>
+      </div>
+      <nav aria-label="Primary">
+        <ul id="navLinks">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle light/dark">🌓</button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu" title="Menu">☰</button>
+        <a class="btn primary" href="#contact" aria-label="Jump to contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="home" class="hero container">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Portfolio</div>
+          <h1 class="h1">Hi, I’m <span style="color:var(--accent)">Puneet Bhardwaj</span>.</h1>
+          <p class="lead">
+            <span id="typed" class="typed" aria-live="polite">BTech CSE Student | Beginner in Web Development &amp; Python</span>
+          </p>
+          <p class="lead">I build the foundation of modern web experiences while studying Computer Science.</p>
+          <div class="actions">
+            <a class="btn primary" href="assets/Puneet_Bhardwaj_Resume.pdf" download>Download Resume</a>
+            <a class="btn" href="https://www.linkedin.com/in/puneet-bhardwaj-869863376?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="#projects">View Projects</a>
+          </div>
+          <div class="actions" style="margin-top:12px">
+            <div class="hero-card" title="Based in Fatehgarh Sahib, Punjab">
+              📍 Fatehgarh Sahib, Punjab, India
+            </div>
+            <div class="hero-card">📧 <a href="mailto:puneetbhardwaj059@gmail.com">puneetbhardwaj059@gmail.com</a></div>
+            <div class="hero-card">📞 <a href="tel:+919779338283">+91&nbsp;97793&nbsp;38283</a></div>
+          </div>
+        </div>
+        <div class="hero-img reveal" aria-label="Profile image">
+          <!-- Replace this image with your own -->
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" alt="Puneet at a desk working on a laptop" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About Me</h2>
+        <p class="sub">Curious, consistent, and committed to mastering computer science fundamentals.</p>
+        <div class="grid about-grid">
+          <div class="card reveal">
+            <p>
+              I am <strong>Puneet Bhardwaj</strong>, a first-year <strong>BTech CSE</strong> student at
+              <strong>Baba Banda Singh Bahadur Engineering College</strong>, Fatehgarh Sahib.
+              I’m passionate about coding, problem-solving, and building clean user interfaces. Currently growing my skills in
+              <strong>HTML</strong>, <strong>CSS</strong>, and <strong>Python</strong>.
+            </p>
+            <div class="actions" style="margin-top:10px">
+              <a class="btn" href="#skills">My Skills</a>
+              <a class="btn" href="#education">Education</a>
+            </div>
+          </div>
+          <figure class="about-figure reveal">
+            <!-- Replace this image with a personal/campus image -->
+            <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop" alt="Campus building with modern architecture" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2>Skills</h2>
+        <p class="sub">A snapshot of what I’m learning and improving every day.</p>
+        <div class="grid skills-grid">
+          <!-- Skill card -->
+          <div class="card skill reveal">
+            <div class="label"><span>HTML</span><span>Beginner</span></div>
+            <div class="bar"><span style="width:40%"></span></div>
+          </div>
+          <div class="card skill reveal">
+            <div class="label"><span>CSS</span><span>Beginner</span></div>
+            <div class="bar"><span style="width:38%"></span></div>
+          </div>
+          <div class="card skill reveal">
+            <div class="label"><span>Python</span><span>Beginner</span></div>
+            <div class="bar"><span style="width:35%"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <div class="container">
+        <h2>Education</h2>
+        <div class="card timeline reveal">
+          <div class="t-item">
+            <div class="t-title">BTech — Computer Science & Engineering (1st Year)</div>
+            <div class="t-meta">Baba Banda Singh Bahadur Engineering College, Fatehgarh Sahib</div>
+            <p>Building a strong base in programming and web technologies.</p>
+          </div>
+          <div class="t-item">
+            <div class="t-title">12th Completed</div>
+            <div class="t-meta">Academic qualification</div>
+          </div>
+          <div class="t-item">
+            <div class="t-title">10th Completed</div>
+            <div class="t-meta">Academic qualification</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Projects</h2>
+        <p class="sub">Future-ready slots to showcase live work with images, descriptions, and tech stacks.</p>
+        <div class="grid projects-grid">
+          <article class="card project reveal">
+            <div class="thumb">Coming Soon</div>
+            <h3 style="margin:12px 0 6px">Personal Portfolio v2</h3>
+            <div class="tag">HTML • CSS • JS</div>
+          </article>
+          <article class="card project reveal">
+            <div class="thumb">Coming Soon</div>
+            <h3 style="margin:12px 0 6px">Mini Python Utilities</h3>
+            <div class="tag">Python</div>
+          </article>
+          <article class="card project reveal">
+            <div class="thumb">Coming Soon</div>
+            <h3 style="margin:12px 0 6px">UI Components Playground</h3>
+            <div class="tag">Frontend</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="sub">Let’s connect for internships, collaborations, or projects.</p>
+        <div class="grid contact-grid">
+          <div class="card reveal">
+            <!-- Simple mailto form (replace later with Formspree/EmailJS if desired) -->
+            <form action="mailto:puneetbhardwaj059@gmail.com" method="post" enctype="text/plain">
+              <input name="name" type="text" placeholder="Your Name" required />
+              <input name="email" type="email" placeholder="Your Email" required />
+              <textarea name="message" placeholder="Your Message" required></textarea>
+              <button class="btn primary" type="submit">Send Message</button>
+            </form>
+            <div class="info-list" style="margin-top:16px">
+              <div>📧 <a href="mailto:puneetbhardwaj059@gmail.com">puneetbhardwaj059@gmail.com</a></div>
+              <div>📞 <a href="tel:+919779338283">+91 97793 38283</a></div>
+              <div>🔗 <a href="https://www.linkedin.com/in/puneet-bhardwaj-869863376?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener">LinkedIn Profile</a></div>
+            </div>
+          </div>
+          <div class="reveal">
+            <iframe class="map" title="Map — Fatehgarh Sahib, Punjab, India" loading="lazy"
+              src="https://www.google.com/maps?q=Fatehgarh%20Sahib,%20Punjab,%20India&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2025 Puneet Bhardwaj. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Small, dependency-free scripts -->
+  <script>
+    // ===== Theme (light/dark) with localStorage + system preference =====
+    (function() {
+      const root = document.documentElement;
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      root.setAttribute("data-theme", saved || (prefersDark ? "dark" : "light"));
+      document.getElementById("themeToggle").addEventListener("click", () => {
+        const current = root.getAttribute("data-theme");
+        const next = current === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
+      });
+    })();
+
+    // ===== Mobile menu toggle =====
+    document.getElementById("menuToggle").addEventListener("click", () => {
+      const nav = document.getElementById("navLinks");
+      const visible = getComputedStyle(nav).display !== "none";
+      nav.style.display = visible ? "none" : "flex";
+      nav.style.flexDirection = "column";
+      nav.style.gap = "12px";
+      nav.style.background = getComputedStyle(document.body).getPropertyValue("--card");
+      nav.style.padding = "12px";
+      nav.style.border = "1px solid " + getComputedStyle(document.body).getPropertyValue("--border");
+      nav.style.borderRadius = "12px";
+      nav.style.position = "absolute";
+      nav.style.right = "12px";
+      nav.style.top = "56px";
+    });
+
+    // ===== Typing effect =====
+    (function typeEffect(){
+      const el = document.getElementById("typed");
+      const text = "BTech CSE Student | Beginner in Web Development & Python";
+      let i = 0, dir = 1;
+      function tick(){
+        i += dir;
+        if(i <= 0 || i >= text.length) dir *= -1;
+        el.textContent = text.slice(0, i);
+        setTimeout(tick, 60);
+      }
+      tick();
+    })();
+
+    // ===== Reveal on scroll =====
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add("visible"); }});
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    // ===== Scrollspy for nav =====
+    const links = [...document.querySelectorAll('nav a')];
+    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY + 120;
+      let current = sections[0];
+      for (const sec of sections) if (sec.offsetTop <= y) current = sec;
+      links.forEach(a => a.classList.toggle(
+      a.getAttribute('href') === '#' + current.id));
+    });
+  </script>
+</body>
+</html>
